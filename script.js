@@ -1,80 +1,89 @@
-//task1
-function getShippingMessage(country, price, deliveryFee) {
+// Task 1
+function task1() {
+  const country = document.getElementById('country').value;
+  const price = parseFloat(document.getElementById('price').value);
+  const deliveryFee = parseFloat(document.getElementById('deliveryFee').value);
   const totalPrice = price + deliveryFee;
-  return `Shipping to ${country} will cost ${totalPrice} credits`;
+  console.log(`Доставка в ${country} коштуватиме ${totalPrice} кредитів`);
 }
 
-console.log(getShippingMessage('Ukraine', 100, 20));
-//task2
-function makeTransaction(quantity, pricePerDroid, customerCredits) {
+// Task 2
+function task2() {
+  const quantity = parseInt(document.getElementById('quantity').value, 10);
+  const pricePerDroid = parseFloat(
+    document.getElementById('pricePerDroid').value,
+  );
+  const customerCredits = parseFloat(
+    document.getElementById('customerCredits').value,
+  );
   const totalPrice = quantity * pricePerDroid;
-
   if (totalPrice > customerCredits) {
-    return 'Insufficient funds!';
+    console.log('Недостатньо коштів!');
   } else {
-    return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
+    console.log(
+      `Ви замовили ${quantity} дроїдів на суму ${totalPrice} кредитів!`,
+    );
   }
 }
 
-console.log(makeTransaction(5, 1000, 6000));
-console.log(makeTransaction(5, 1000, 4000));
-//task3
-function makeArray(firstArray, secondArray, maxLength) {
+// Task 3
+function task3() {
+  const firstArray = document
+    .getElementById('firstArray')
+    .value.split(',')
+    .map(Number);
+  const secondArray = document
+    .getElementById('secondArray')
+    .value.split(',')
+    .map(Number);
+  const maxLength = parseInt(document.getElementById('maxLength').value, 10);
   const combinedArray = firstArray.concat(secondArray);
-  return combinedArray.length > maxLength
-    ? combinedArray.slice(0, maxLength)
-    : combinedArray;
+  const result =
+    combinedArray.length > maxLength
+      ? combinedArray.slice(0, maxLength)
+      : combinedArray;
+  console.log('Комбінований масив:', result);
 }
 
-console.log(makeArray([1, 2], [3, 4, 5], 4));
-console.log(makeArray([1, 8], [3, 9, 5], 10));
-//task4
-// Функція створення масиву заданої довжини з випадковими числами
-const createArray = length =>
-  Array.from({ length }, () => Math.floor(Math.random() * 100));
-
-// Функція для обчислення суми елементів між мінімальним і максимальним значенням
-const sumBetweenMinAndMax = arr => {
-  const minIndex = arr.indexOf(Math.min(...arr));
-  const maxIndex = arr.indexOf(Math.max(...arr));
+// Task 4
+function task4() {
+  const arrayLength = parseInt(
+    document.getElementById('arrayLength').value,
+    10,
+  );
+  const array = Array.from({ length: arrayLength }, () =>
+    Math.floor(Math.random() * 100),
+  );
+  console.log('Згенерований масив:', array);
+  const minIndex = array.indexOf(Math.min(...array));
+  const maxIndex = array.indexOf(Math.max(...array));
   const [start, end] = [
     Math.min(minIndex, maxIndex) + 1,
     Math.max(minIndex, maxIndex),
   ];
-  return arr.slice(start, end).reduce((sum, num) => sum + num, 0);
-};
-// Функція швидкого сортування масиву
-const quickSort = arr =>
-  arr.length <= 1
-    ? arr
-    : [
-        ...quickSort(arr.filter(el => el < arr[0])),
-        ...arr.filter(el => el === arr[0]),
-        ...quickSort(arr.filter(el => el > arr[0])),
-      ];
-// Основна програма
-const arrayLength = parseInt(
-  prompt('Введіть кількість елементів у масиві:'),
-  10,
-);
-const array = createArray(arrayLength);
-console.log('Вхідний масив:', array);
-console.log(
-  'Сума елементів між мінімальним і максимальним значеннями:',
-  sumBetweenMinAndMax(array),
-);
-console.log('Вихідний масив (відсортований):', quickSort(array));
-//task5
+  const sum = array.slice(start, end).reduce((sum, num) => sum + num, 0);
+  console.log('Сума між мінімальним та максимальним значеннями:', sum);
+  const quickSort = arr =>
+    arr.length <= 1
+      ? arr
+      : [
+          ...quickSort(arr.filter(el => el < arr[0])),
+          ...arr.filter(el => el === arr[0]),
+          ...quickSort(arr.filter(el => el > arr[0])),
+        ];
+  console.log('Відсортований масив:', quickSort(array));
+}
 
+// Task 5
 $(function () {
-  // Ініціалізація datepicker
   $('#datepicker').datepicker({
-    changeMonth: true, // Перехід між місяцями
-    changeYear: true, // Перехід між роками
-    dateFormat: 'yy-mm-dd', // Формат дати
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd',
   });
 });
 
 function cancelDate() {
-  $('#datepicker').val(''); // Очищає поле вибору дати
+  $('#datepicker').val('');
+  console.log('Вибір дати скасовано');
 }

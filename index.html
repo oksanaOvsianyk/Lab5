@@ -8,14 +8,53 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
-    <h1>JavaScript Test</h1>
-    <script src="script.js"></script>
-    <label for="datepicker">Вибір дати:</label>
+    <h1>Завдання на JavaScript</h1>
+
+    <!-- Task 1 -->
+    <h2>Завдання 1: Повідомлення про доставку</h2>
+    <label for="country">Країна:</label>
+    <input type="text" id="country">
+    <label for="price">Ціна:</label>
+    <input type="number" id="price">
+    <label for="deliveryFee">Вартість доставки:</label>
+    <input type="number" id="deliveryFee">
+    <button onclick="task1()">Розрахувати доставку</button>
+
+    <!-- Task 2 -->
+    <h2>Завдання 2: Транзакція з дроїдами</h2>
+    <label for="quantity">Кількість:</label>
+    <input type="number" id="quantity">
+    <label for="pricePerDroid">Ціна за дроїд:</label>
+    <input type="number" id="pricePerDroid">
+    <label for="customerCredits">Кредити клієнта:</label>
+    <input type="number" id="customerCredits">
+    <button onclick="task2()">Виконати транзакцію</button>
+
+    <!-- Task 3 -->
+    <h2>Завдання 3: Комбінація масивів</h2>
+    <label for="firstArray">Перший масив (через кому):</label>
+    <input type="text" id="firstArray">
+    <label for="secondArray">Другий масив (через кому):</label>
+    <input type="text" id="secondArray">
+    <label for="maxLength">Максимальна довжина:</label>
+    <input type="number" id="maxLength">
+    <button onclick="task3()">Комбінувати масиви</button>
+
+    <!-- Task 4 -->
+    <h2>Завдання 4: Операції з масивом</h2>
+    <label for="arrayLength">Довжина масиву:</label>
+    <input type="number" id="arrayLength">
+    <button onclick="task4()">Згенерувати та обробити масив</button>
+
+    <!-- Task 5 -->
+    <h2>Завдання 5: Вибір дати</h2>
+    <label for="datepicker">Виберіть дату:</label>
     <input type="text" id="datepicker">
-    <button type="button" onclick="cancelDate()">Скасувати</button>
+    <button onclick="cancelDate()">Скасувати дату</button>
 </body>
 
 </html>
